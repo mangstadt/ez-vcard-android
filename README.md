@@ -1,23 +1,27 @@
 # ez-vcard-android
 
-Maps the Android vCard API to the [ez-vcard](http://github.com/mangstadt/ez-vcard) API.  Converts an [ez-vcard](http://github.com/mangstadt/ez-vcard) `VCard` object into the appropriate Android data fields, so it can be added to an Android user's contact list.
+Maps the Android vCard API to the [ez-vcard](http://github.com/mangstadt/ez-vcard) API.
+
+Converts an [ez-vcard](http://github.com/mangstadt/ez-vcard) `VCard` object into the appropriate Android data fields, so it can be added to an Android user's contact list.
 
 #1 Code Sample
 
-    File vcardFile = ...
-    VCardReader reader = null;
-    try {
-      reader = new VCardReader(vcardFile);
-      reader.registerScribe(new AndroidCustomFieldScribe());
-    
-      ContactOperations operations = new ContactOperations(getApplicationContext());
-      VCard vcard = null;
-      while ((vcard = reader.readNext()) != null) {
-          operations.insertContact(vcard);
-      }
-    } finally {
-      reader.close();
-    }
+```java
+File vcardFile = ...
+VCardReader reader = null;
+try {
+  reader = new VCardReader(vcardFile);
+  reader.registerScribe(new AndroidCustomFieldScribe());
+
+  ContactOperations operations = new ContactOperations(getApplicationContext());
+  VCard vcard = null;
+  while ((vcard = reader.readNext()) != null) {
+      operations.insertContact(vcard);
+  }
+} finally {
+  reader.close();
+}
+```
 
 #2 Download
 

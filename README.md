@@ -4,7 +4,7 @@ Maps the Android vCard API to the [ez-vcard](http://github.com/mangstadt/ez-vcar
 
 Converts an [ez-vcard](http://github.com/mangstadt/ez-vcard) `VCard` object into the appropriate Android data fields, so it can be added to an Android user's contact list.
 
-#1 Code Sample
+#Code Sample
 
 ```java
 File vcardFile = ...
@@ -23,11 +23,11 @@ try {
 }
 ```
 
-#2 Download
+#Download
 
 A downloadable JAR file does not exist yet.  You can either build the project yourself, or copy and paste the code into your project (please leave the copyright notice in the source code if you choose the latter option).
 
-#3 Development Environment Setup Instructions
+#Development Environment Setup Instructions
 
 If you are not using an Android-enabled IDE, follow these instructions so you can get the project to a point where you can build it.
 

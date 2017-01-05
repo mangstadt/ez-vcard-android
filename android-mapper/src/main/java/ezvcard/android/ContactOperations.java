@@ -89,13 +89,10 @@ public class ContactOperations {
 		account.put(ContactsContract.RawContacts.ACCOUNT_NAME, accountName);
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void insertContact(VCard vcard) throws RemoteException, OperationApplicationException {
 		// TODO handle Raw properties - Raw properties include various extension which start with "X-" like X-ASSISTANT, X-AIM, X-SPOUSE
 
 		List<NonEmptyContentValues> contentValues = new ArrayList<NonEmptyContentValues>();
-		contentValues.add(account);
-
 		convertName(contentValues, vcard);
 		convertNickname(contentValues, vcard);
 		convertPhones(contentValues, vcard);
@@ -118,14 +115,21 @@ public class ContactOperations {
 		convertOrganization(contentValues, vcard);
 
 		ArrayList<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>(contentValues.size());
+		ContentValues cv = account.getContentValues();
+		//ContactsContract.RawContact.CONTENT_URI needed to add account, backReference is also not needed
+		ContentProviderOperation operation =
+				ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI) 
+						.withValues(cv)
+						.build();
+		operations.add(operation);
 		for (NonEmptyContentValues values : contentValues) {
-			ContentValues cv = values.getContentValues();
+			cv = values.getContentValues();
 			if (cv.size() == 0) {
 				continue;
 			}
 
 			//@formatter:off
-			ContentProviderOperation operation =
+			operation =
 				ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
 				.withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, rawContactID)
 				.withValues(cv)

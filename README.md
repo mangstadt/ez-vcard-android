@@ -36,7 +36,7 @@ If you are not using an Android-enabled IDE, follow these instructions so you ca
  * Download the appropriate file for your OS in the "SDK Tools Only" table.
  * Unzip/install the file to a location of your choice.
  * Run the "tools/android" script in the installation to open the Android SDK Manager.
- * Install the the following packages (if some of these aren't in the list, install what you can, then restart the SDK Manager to see if they appear):
+ * Install the following packages (if some of these aren't in the list, install what you can, then restart the SDK Manager to see if they appear):
   * Tools -> Android SDK Tools (latest version)
   * Tools -> Android SDK Platform-tools (latest version)
   * Tools -> Android SDK Build-tools (version 19.0.3)
